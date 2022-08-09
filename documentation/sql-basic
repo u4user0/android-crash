@@ -1,0 +1,70 @@
+ਇਸ lecture ਦੇ ਵਿੱਚ ਇੱਕ method ਬਣਾਇਆ insertMethod in class
+
+MyHelper
+
+ ਸੀ ਜਿਸ ਨਾਲ ਜੋ value user ਨੇ input ਕਿਤੀ ਉਹ DB ਵਿੱਚ ਚਲੀ ਜਾਂਦੀ ਹੈ ਉਹ method ਨੂੰ insert button ਤੇ ਲਾਇਆ ਗਿਆ ਸੀ। ਇਹ insert method ਦਾ return type long ਹੋਊਗਾ (long return bcoz ਇਹ ਅੱਗੇ discuss ਹੈ) ਤੇ ਇਹ method for ex 2value ਲਾਊਗਾ (String name,int age)
+
+insert ਕਰਨ ਲਈ ਆਪਾ 2 ਤਰੀਕੇ ਦਾ use ਕਰ ਸਕਦੇ like
+
+(੧) simple sql query: for ex insert into table.... ਤੇ ਫਿਰ ਇਸ method ਨਾਲ਼ db.exeSQL() insert ਕਰ ਸਕਦੇ data ਨੂੰ in DB, ਇਹ sql ਦਾ ਤਰੀਕਾ। .execSQL()  method ਦਾ ਕੋਈ return type ਨਹੀ ਹੈ ਤੇ ਆਪਾ ਨੂੰ ਪਤਾ ਨਹੀਂ ਲੱਗਦਾ value insert ਹੋਈ ਹੈ ਕੇ ਨਹੀ।
+
+(੨) ਇਸ ਦਾ return type long ਇਸ ਲਈ ਹੈ bcoz ਉਹ long value ਜੋ return ਹੋਈ ਹੈ ਉਸ ਵਿੱਚ ਆਪਾ ਨੂੰ ਉਹ numbers ਮਿਲ਼ਦੇ ਹੈ ਜਿੰਨੇ rows ਆਪਾ table ਵਿੱਚ insert ਕੀਤੇ ਹੈ।
+
+ਤੇ ਇਸ ਤਰੀਕੇ ਵਿੱਚ ਆਪਾ ਨੂੰ ContentValues ਦਾ object ਬਣਾਉਣਾ ਹੈ, 
+
+ContentValues contentValue = new ContentValue ();
+
+ਇਹ ContentValues object key:value pair ਤੇ ਕੰਮ ਕਰਦਾ, ਤੇ ਇਸ ਦੇ use ਨਾਲ ਆਪਾ ਪਹਿਲਾਂ ਜੋ values ਜਿੰਨਾ ਨੂੰ ਆਪਾ DB ਵਿੱਚ enter ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੈ ਉਹ ContentValues ਵਿੱਚ add ਕਰਾਗੇ
+
+ contentValues.put ("key/colName","value/data eh data ਆਪਾ ਨੂੰ method ਦੇ (ਇਥੋਂ ਮਿਲੁਗਾ like ਉੱਪਰ ex String name , & name is data");
+
+ਇਸ contentValues ਨੂੰ add ਕਰਨ ਲਈ table ਵਿੱਚ ਤੇ ਇਸ ਲਈ ਆਪਾ ਨੂੰ ਚਾਹੀਦਾ SQLLiteDB object.
+
+SQLiteDatabase sqliteDatabase= this.getWriteableDatabase();//this ਮਤਲਬ ਇਹ class 
+
+sqliteDatabase.insert ();//ਇੱਥੇ ਇਸ ਨੂੰ 3 values ਚਾਹੀਦੀਆਂ(i) tableName ਜਿਸ ਵਿੱਚ ਆਪ data insert ਕਰਨਾ ਚਾਹੁੰਦੇ (ii) ਉਸ table ਦਾ ਨਾਮ ਜੋ null ਹੋ ਸੱਕਦਾ (iii) contentValues 
+
+ਤੇ ਇਹ ਆਪਣਾ insertMethod ਇੱਕ long int value return ਕਰੂਗਾ ਜੋ ਦੱਸੇਗਾ ਵੀ ਆਪਾ ਕਿੰਨੀਆਂ rows insert ਕੀਤੀਆਂ in DB.
+
+___________________
+
+in MainActivity.java
+
+___________________
+
+create object of class MyHelper
+
+MyHelper myHelper;
+
+myHelper= new MyHelper (this);
+
+myHelper.getWriteableDatabase();
+
+_--------_--------_--------_--------_-------_-------_
+
+Update 
+
+ਇੱਕ method ਹੋਊਗਾ in MyHelper ਵਿੱਚ
+
+public int updateData(string name, int age){//name reference ਹੋਗਿਆ ਜਿੱਥੇ ਵੀ name ਮਿੱਲਜੇ ਉੱਥੇ age change ਕਰਨਾ ਜੋ ਆਊਗਾ in () ਵਿੱਚ 
+
+ਇੱਥੇ ਇਸਦਾ return type int ਹੈ bcoz ਵੀ ਕਿੰਨੀਆਂ rows update ਤੋ effect ਹੋਣ ਗੀਆ। ਇੱਥੇ ਵੀ 2type ਨਾਲ update ਕਰ ਸੱਕਦੇ ਜਿਹੜੇ ਉੱਪਰ ਦੱਸੇ।
+
+ContentValues contentValue = new ContentValue ();
+
+contentValues.put(colAge,age);
+
+return sqlLiteDB.update(tableName, contentValues,colName+ "=?", new String[]{name});
+
+}
+
+_--------_--------_--------_--------_-------_-------_
+
+Delete
+
+public int deletData(String name){
+
+return sqlLiteDB.delete(tableName,colName + "=?", new String[]{name});
+
+}
+
