@@ -1,0 +1,41 @@
+in manifest.xml file
+
+<uses-permission android:name="android.permission.BLUETOOTH"/>
+
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+BluetoothAdapter myBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
+		if(myBluetoothAdapter==null){			Toast.makeText(this,"Bluetooth not supported",Toast.LENGTH_LONG).show();
+
+		}else{
+
+			if(!myBluetoothAdapter.isEnabled()){
+
+				Intent enableBluetooth = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+				startActivityForResult(enableBluetooth,REQUEST_ENABLE_BT);
+
+			}
+
+		}
+
+@Override
+
+	protected void onActivityResult(int requestCode,int resultCode,Intent data){
+
+		if(requestCode==REQUEST_ENABLE_BT){
+
+			if(requestCode==RESULT_OK){
+
+				
+
+			}else if (resultCode==RESULT_CANCELED){
+
+				
+
+			}
+
+		}
+
+	}
