@@ -1,0 +1,38 @@
+Most android powered devices have built-in sensors that measures orientation, motion, and various environmental conditions. We can get gestures and motion such as tilt, shake, rotation etc.
+
+Categories of sensors:
+
+(i) motion sensors 
+
+(ii) environmental sensors 
+
+(iii) positional sensors 
+
+Motion sensors:
+
+These sensors measures acceleration forces & rotational forces along three axes.
+
+This category includes-
+
+Accelerometer, gravity sensor, gyroscope & rotational vector sensors. 
+
+Environmental sensors: 
+
+These sensors measures various environmental parameters such as ambient air temperature & presure, illumination & humidity 
+
+This category includes-
+
+Barometers, thermometers & photometers.
+
+Positional sensors: 
+
+these sensors measures the physical position of a device.
+
+This category includes- 
+
+Orientation sensors & magnetometers.
+
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+sensors API ਦਾ chart available ਹੈ in pics.
+
